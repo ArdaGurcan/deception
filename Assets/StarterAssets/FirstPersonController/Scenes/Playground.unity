@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: efa939ea45185244885dab9d28b25aea, type: 2}
 --- !u!1 &133927666 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1154626602798779711, guid: 5dc13acd38ee9494499ef7e1c62043b7, type: 3}
@@ -140,11 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45c8f1e29c185bf1802ba6374dce9fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &294783411 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
-  m_PrefabInstance: {fileID: 7288094137546172433}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &462370638 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -163,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1154626602798779711, guid: 5dc13acd38ee9494499ef7e1c62043b7, type: 3}
-  mainCamera: {fileID: 294783411}
+  mainCamera: {fileID: 0}
   bulletSpeed: 20
 --- !u!1 &538460613
 GameObject:
@@ -722,9 +717,10 @@ GameObject:
   - component: {fileID: 1295427061}
   - component: {fileID: 1295427062}
   - component: {fileID: 1295427063}
+  - component: {fileID: 1295427064}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -820,7 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3560cb2fbc82971b902c16bbd3b43c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 133927666}
+  bulletPrefab: {fileID: 3165912672124674883, guid: 53e596305ecc9671c9189abdbaa4e256, type: 3}
   mainCamera: {fileID: 0}
   bulletSpeed: 5
   speed: 0.5
@@ -857,6 +853,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!195 &1295427064
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295427055}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 2
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &1430992768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -882,7 +900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7402662494703136954, guid: 5dc13acd38ee9494499ef7e1c62043b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 2.324
       objectReference: {fileID: 0}
     - target: {fileID: 7402662494703136954, guid: 5dc13acd38ee9494499ef7e1c62043b7, type: 3}
       propertyPath: m_LocalPosition.y
