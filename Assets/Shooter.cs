@@ -25,7 +25,10 @@ public class Shooter : MonoBehaviour
     void Update()
     {  
         if(Mouse.current.leftButton.wasPressedThisFrame) {
-            GameObject bullet = Instantiate(bulletPrefab, mainCamera.position, mainCamera.rotation);
+            // var x = mainCamera.transform.localEulerAngles.x * Mathf.PI / 180f;
+           // var z = mainCamera.transform.localEulerAngles.x * Mathf.PI / 180f;
+            GameObject bullet = Instantiate(bulletPrefab, mainCamera.position + mainCamera.right*0.5f + mainCamera.up*-0.2f, mainCamera.rotation);//new Vector3(mainCamera.position.x + 0.5f * Mathf.Sin(x), mainCamera.position.y - 0.5f, mainCamera.position.z + 0.5f * Mathf.Sin(z)) , mainCamera.rotation);
+            
             bullet.GetComponent<Rigidbody>().velocity = mainCamera.forward * bulletSpeed;
         }
     }
