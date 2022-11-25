@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
   Transform mainCamera;
+  Animator enemy_Animator;
 
   void Start()
   {
@@ -22,6 +23,11 @@ public class Bullet : MonoBehaviour
 
   void OnTriggerEnter(Collider other)
   {
+    if (other.CompareTag("Enemy")) {
+      enemy_Animator = other.gameObject.GetComponent<Animator>(); 
+      enemy_Animator.SetTrigger("shotTrigger");
+      Destroy(gameObject);
+    }
     if (!other.CompareTag("Player"))
       Destroy(gameObject);
 
