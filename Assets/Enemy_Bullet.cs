@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Enemy_Bullet : MonoBehaviour
 {
-    Transform enemy;
+  Transform enemy;
   void Start()
   {
     transform.Rotate(90, 0, 0);

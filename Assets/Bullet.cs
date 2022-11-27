@@ -23,17 +23,20 @@ public class Bullet : MonoBehaviour
 
   void OnTriggerEnter(Collider other)
   {
+    Debug.Log("Hit " + other.tag + " " + other.name);
+    // if the bullet hits an enemy
     if (other.CompareTag("Enemy")) {
       enemy_Animator = other.gameObject.GetComponent<Animator>(); 
+      // change animation to Death
       enemy_Animator.SetTrigger("shotTrigger");
       Destroy(gameObject);
     }
     if (!other.CompareTag("Player"))
       Destroy(gameObject);
 
-    if(other.CompareTag("Enemy")) {
-      Destroy(gameObject);
-      Destroy(other.gameObject);
-    }
+    // if(other.CompareTag("Enemy")) {
+    //   Destroy(gameObject);
+    //   Destroy(other.gameObject);
+    // }
   }
 }
