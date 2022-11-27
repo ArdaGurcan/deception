@@ -53,6 +53,7 @@
         "Temp/":true
     },
     "workbench.colorCustomizations": {
+
         "activityBar.activeBackground": "#6c879b",
         "activityBar.background": "#6c879b",
         "activityBar.foreground": "#15202b",

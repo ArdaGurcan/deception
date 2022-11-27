@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     Transform mainCamera;
 
     [SerializeField]
-    float bulletSpeed = 5f;
+    float bulletSpeed = 10f;
 
     Animator enemy_Animator;
 
@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
         enemy_Animator = gameObject.GetComponent<Animator>(); 
 
         enemy = gameObject.transform;
+
         // enemy.position = new Vector3(enemy.position.x, enemy.position.y, 0f);
         player = GameObject.FindGameObjectWithTag("Player").transform;
         navComponent = gameObject.GetComponent<NavMeshAgent>();
@@ -38,12 +39,14 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (enemy_Animator.GetCurrentAnimatorStateInfo(0).IsName("Death (2)")) {
             CancelInvoke();
             navComponent.velocity = Vector3.zero;
             navComponent.isStopped = true;
         }
         navComponent.SetDestination(player.position);
+        
 
         var step =  speed * Time.deltaTime; // calculate distance to move
         // transform.position = Vector3.MoveTowards(enemy.position, player.position, step);
@@ -52,7 +55,9 @@ public class Enemy : MonoBehaviour
     }
 
     void Shoot() {
-        GameObject bullet = Instantiate(bulletPrefab, enemy.position + enemy.up * 0.3f, enemy.rotation);
-        bullet.GetComponent<Rigidbody>().velocity = enemy.forward * bulletSpeed;  
+        if(gameObject != null) {
+            GameObject bullet = Instantiate(bulletPrefab, enemy.position + enemy.up * 0.3f, enemy.rotation);
+            bullet.GetComponent<Rigidbody>().velocity = enemy.forward * bulletSpeed;
+        }
     }
 }
