@@ -11,11 +11,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PortalIgnore
   - Water
   - UI
-  - 
-  - 
+  - Portal1
+  - Portal2
   - 
   - 
   - 
