@@ -21,13 +21,16 @@ public class Enemy : MonoBehaviour
     Transform enemy;
     Transform player;
     private NavMeshAgent navComponent;
+    private CapsuleCollider collider;
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log(gameObject.tag + " name: " + gameObject.name);
         enemy_Animator = gameObject.GetComponent<Animator>(); 
+        collider = gameObject.GetComponent<CapsuleCollider>();
 
         enemy = gameObject.transform;
+        // enemy.position = new Vector3(enemy.position.x, 0, enemy.position.z);
 
         // enemy.position = new Vector3(enemy.position.x, enemy.position.y, 0f);
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -44,20 +47,26 @@ public class Enemy : MonoBehaviour
             CancelInvoke();
             navComponent.velocity = Vector3.zero;
             navComponent.isStopped = true;
-        }
-        navComponent.SetDestination(player.position);
-        
+            transform.LookAt(gameObject.transform.up);
+            if(collider == null) 
+                Debug.Log("collider not found");
+            Destroy(collider);
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.35f, transform.position.z);
+            // navComponent.baseOffset = -0.1f;
 
-        var step =  speed * Time.deltaTime; // calculate distance to move
-        // transform.position = Vector3.MoveTowards(enemy.position, player.position, step);
-        transform.LookAt(player.position + player.up * 1f);
-        
+        } else {
+            navComponent.SetDestination(player.position);
+            var step =  speed * Time.deltaTime; // calculate distance to move
+            // transform.position = Vector3.MoveTowards(enemy.position, player.position, step);
+            transform.LookAt(player.position + player.up * 1f);
+        }
     }
 
     void Shoot() {
         if(gameObject != null) {
-            GameObject bullet = Instantiate(bulletPrefab, enemy.position + enemy.up * 0.3f, enemy.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, enemy.position + enemy.up * 1f, enemy.rotation);
             bullet.GetComponent<Rigidbody>().velocity = enemy.forward * bulletSpeed;
         }
     }
+
 }
