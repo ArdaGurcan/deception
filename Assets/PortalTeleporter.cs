@@ -20,6 +20,7 @@ public class PortalTeleporter : MonoBehaviour {
 			Vector3 portalToPlayer = player.position - transform.position;
 			float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
 			// If this is true: The player has moved across the portal
+			Debug.Log(dotProduct);
 			if (dotProduct < 0f)
 			{
 				// Teleport him!

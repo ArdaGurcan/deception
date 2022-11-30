@@ -6,18 +6,23 @@ using UnityEngine.InputSystem;
 
 public class SceneManagement : MonoBehaviour
 {
+  [SerializeField]
+  Animator gun;
 
-    // Start is called before the first frame update
-    void Start()
+  void Update()
+  {
+    if (Keyboard.current.qKey.wasPressedThisFrame && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
     {
-        
+      gun.SetTrigger("die");
+      StartCoroutine("LoadScene");
     }
+  }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Keyboard.current.qKey.wasPressedThisFrame && GameObject.FindGameObjectsWithTag("Enemy").Length == 0) {
-            SceneManager.LoadScene(0);
-        }
-    }
+  IEnumerator LoadScene()
+  {
+    yield return new WaitForSeconds(2);
+    SceneManager.LoadScene(0);
+  }
+
+
 }
