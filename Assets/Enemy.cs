@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
         enemy_Animator = gameObject.GetComponent<Animator>(); 
 
         enemy = gameObject.transform;
+
         // enemy.position = new Vector3(enemy.position.x, enemy.position.y, 0f);
         player = GameObject.FindGameObjectWithTag("Player").transform;
         navComponent = gameObject.GetComponent<NavMeshAgent>();
@@ -43,9 +44,6 @@ public class Enemy : MonoBehaviour
             CancelInvoke();
             navComponent.enabled =false;
             navComponent.baseOffset = -0.025f;
-            navComponent.velocity = Vector3.zero;
-            navComponent.updateRotation = false;
-            navComponent.angularSpeed = 0;
         }
         else {
              navComponent.SetDestination(player.position);
@@ -59,7 +57,9 @@ public class Enemy : MonoBehaviour
     }
 
     void Shoot() {
-        GameObject bullet = Instantiate(bulletPrefab, enemy.position + enemy.up * 0.3f, enemy.rotation);
-        bullet.GetComponent<Rigidbody>().velocity = enemy.forward * bulletSpeed;  
+        if(gameObject != null) {
+            GameObject bullet = Instantiate(bulletPrefab, enemy.position + enemy.up * 0.3f, enemy.rotation);
+            bullet.GetComponent<Rigidbody>().velocity = enemy.forward * bulletSpeed;
+        }
     }
 }

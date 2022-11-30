@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 836874537578330432}
   - component: {fileID: 836874537578330435}
   - component: {fileID: 836874537578330434}
+  - component: {fileID: 7280338736079331612}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -32,7 +33,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.45, y: 2.76, z: 8.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -116,7 +117,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3165912672124674883, guid: 53e596305ecc9671c9189abdbaa4e256, type: 3}
   mainCamera: {fileID: 0}
   bulletSpeed: 5
-  speed: 0.5
+  speed: 0.3
 --- !u!114 &836874537578330435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,3 +151,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!195 &7280338736079331612
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836874537578330458}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
