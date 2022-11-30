@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
         // enemy.position = new Vector3(enemy.position.x, enemy.position.y, 0f);
         player = GameObject.FindGameObjectWithTag("Player").transform;
         navComponent = gameObject.GetComponent<NavMeshAgent>();
+        Debug.Log("Nav component base off set: " + navComponent.baseOffset);
         InvokeRepeating("Shoot", 5f, 5f);
         // Debug.Log("end of start() enemy position y" + enemy.position.y);
     }
@@ -38,16 +39,22 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemy_Animator.GetCurrentAnimatorStateInfo(0).IsName("Death (2)")) {
+        if (enemy_Animator.GetCurrentAnimatorStateInfo(0).IsName("Death")) {
             CancelInvoke();
+            navComponent.enabled =false;
+            navComponent.baseOffset = -0.025f;
             navComponent.velocity = Vector3.zero;
-            navComponent.isStopped = true;
+            navComponent.updateRotation = false;
+            navComponent.angularSpeed = 0;
         }
-        navComponent.SetDestination(player.position);
+        else {
+             navComponent.SetDestination(player.position);
 
-        var step =  speed * Time.deltaTime; // calculate distance to move
-        // transform.position = Vector3.MoveTowards(enemy.position, player.position, step);
-        transform.LookAt(player.position + player.up * 1f);
+            var step =  speed * Time.deltaTime; // calculate distance to move
+            // transform.position = Vector3.MoveTowards(enemy.position, player.position, step);
+            transform.LookAt(player.position + player.up * 1f);
+        }
+       
         
     }
 
