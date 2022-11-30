@@ -20,8 +20,10 @@ public class DoorTriggerController : MonoBehaviour
 
      void OnTriggerExit(Collider other) 
      {
-        door_Animator = gameObject.GetComponent<Animator>(); 
-        door_Animator.SetTrigger("PlayerIsOut");
+        if (other.CompareTag("Player")) {
+            door_Animator = gameObject.GetComponent<Animator>(); 
+            door_Animator.SetTrigger("PlayerIsOut");
+        }
      }
   
     
